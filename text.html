@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CriptoTech | Seu site começa aqui</title>
+
+  <!-- Ícone e Manifest -->
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png">
+  <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00ffd5" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f0f1a;
+      color: #fff;
+    }
+
+    header {
+      background-color: #181828;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #00ffd5;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    .features, .feedbacks {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .features h2, .feedbacks h2 {
+      color: #00ffd5;
+    }
+
+    .features ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .features li {
+      background: #1d1d2f;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .feedback {
+      background-color: #1f1f2e;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 4px solid #00ffd5;
+      border-radius: 6px;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .cta a {
+      background-color: #00ffd5;
+      color: #000;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #181828;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 24px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+    }
+
+    #installPrompt {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: #00ffd5;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CriptoTech</h1>
+    <p>Transformamos sua ideia em um site profissional, moderno e seguro.</p>
+  </header>
+
+  <section class="features">
+    <h2>✨ O que oferecemos:</h2>
+    <ul>
+      <li>+ de 6 anos de experiência no mercado</li>
+      <li>Hospedagem já inclusa</li>
+      <li>Sites responsivos e personalizados</li>
+      <li>Design moderno com vibe tecnológica</li>
+      <li>Funcionalidades avançadas como login, painel, formulários</li>
+      <li>Entrega rápida com suporte contínuo</li>
+      <li>Preços acessíveis a partir de R$50</li>
+    </ul>
+  </section>
+
+  <section class="feedbacks">
+    <h2>🗣️ O que dizem sobre nós:</h2>
+    <div class="feedback">“O site ficou melhor do que eu imaginava! Obrigado CriptoTech!” – João R.</div>
+    <div class="feedback">“Profissionalismo do início ao fim. Super recomendo!” – Carla M.</div>
+    <div class="feedback">“Me entregaram em 2 dias e ficou impecável.” – Felipe T.</div>
+  </section>
+
+  <div class="cta">
+    <a href="https://wa.me/5544998329604" target="_blank">Fale agora via WhatsApp</a>
+  </div>
+
+  <footer>
+    🚨 Política de Privacidade: Todos os sites criados serão removidos se o pagamento não for cumprido conforme combinado.<br>
+    &copy; 2025 CriptoTech. Todos os direitos reservados.
+  </footer>
+
+  <a class="whatsapp-btn" href="https://wa.me/5544998329604" target="_blank" title="Fale conosco no WhatsApp">
+    💬
+  </a>
+
+  <div id="installPrompt">📲 Adicionar à Tela Inicial</div>
+
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installPrompt');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'block';
+    });
+
+    installBtn.addEventListener('click', () => {
+      installBtn.style.display = 'none';
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(choiceResult => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('Usuário aceitou instalar o atalho');
+          } else {
+            console.log('Usuário recusou o atalho');
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
